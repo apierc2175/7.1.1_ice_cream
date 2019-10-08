@@ -7,14 +7,35 @@ from .models import IceCream
 # Create your views here.
 
 def index(request):
-    # return HttpResponse("Hellow World")
     ice_cream_list = IceCream.objects.all()
-    ice_cream_list = IceCream.objects.filter(available="WEEKLY")
-    # flavor = get_object_or_404(Flavor, pk=flavor_id)
 
     context = {
         'ice_cream_list': ice_cream_list,
+        'heading': 'All'
     }
 
     return render(request, 'icecream/index.html', context)
     # return HttpResponseRedirect(reverse('icecream:index', args=(flavor.id,)))
+
+def daily(request):
+    ice_cream_list = IceCream.objects.filter(available='DAILY')
+
+    context = {
+        'ice_cream_list': ice_cream_list,
+        'heading': 'Daily Ice Cream Flavors'
+    }
+    return render(request, 'icecream/index.html', context)
+
+def weekly(request):
+    ice_cream_list = IceCream.objects.filter(available='WEEKLY')
+    context = {'ice_cream_list': ice_cream_list, 'heading': 'Weekly'}
+    return render(request, 'icecream/index.html', context)
+
+def seasonal(request):
+    ice_cream_list = IceCream.objects.filter(available='SEASONAL')
+
+    context = {
+        'ice_cream_list': ice_cream_list,
+        'heading': 'Seasonal Ice Cream Flavors'
+    }
+    return render(request, 'icecream/index.html', context)

@@ -16,13 +16,17 @@
 </ul>
   -->
 
-
-{% if flavor_list %}
+{{heading}}
+{% if ice_cream_list %}
 <!-- find way to seperate ul so each category has ul, daily, weekly seasonal -->
   <ul>
-    {% for flavor in flavor_list %}
+    {% for ice_cream in ice_cream_list %}
     <!-- each list item should say the flavor, base, date churned, featured -->
-    <li><a href="{% url 'icecream:index' flavor.id %}">{{flavor.flavor_list}}</a></li>
+    <li>
+      <p>{{ice_cream.flavor}}</p>
+      <p>{{ice_cream.featured}}</p>
+      <p>{{ice_cream.date_churned}}</p>
+    </li>
     {% endfor %}
   </ul>
 {% else %}
