@@ -4,27 +4,37 @@ from django.utils import timezone
 CHO = 'CHOCOLATE'
 VAN = 'VANILLA'
 
-DAI = 'DAILY'
-WEE = 'WEEKLY'
-SEA = 'SEASONAL'
+
 
 
 class IceCream(models.Model):
-    flavor_text = models.CharField(max_length=30)
-    base = [
-        (CHO, 'Chocolate'),
-        (VAN, 'Vanilla'),
+
+    DAILY = 'DAILY'
+    WEEKLY = 'WEEKLY'
+    SEASONAL = 'SEASONAL'
+
+    AVAILABLE_CHOICES = [
+        (DAILY, 'Daily'),
+        (WEEKLY, 'Weekly'),
+        (SEASONAL, 'Seasonal'),
     ]
-    available = [
-        (DAI, 'Daily'),
-        (WEE, 'Weekly'),
-        (SEA, 'Seasonal'),
+
+    CHOCOLATE = 'CHOCOLATE'
+    VANILLA = 'VANILLA'
+
+    BASE_CHOICES = [
+        (CHOCOLATE, 'Chocolate'),
+        (VANILLA, 'Vanilla'),
     ]
+
+    flavor = models.CharField(max_length=30)
+    base = models.CharField(max_length=30, choices=BASE_CHOICES, default=CHOCOLATE)
+    available = models.CharField(max_length=255, choices=AVAILABLE_CHOICES, default=DAILY)
     featured = models.BooleanField(default=False)
     date_churned = models.DateTimeField('date churned', default=timezone.now)
 
     def __str__(self):
-        return self.flavor_text
+        return self.flavor
 #
 # class Choice(models.Model):
 #      flavor = models.ForeignKey(IceCream, on_delete=models.CASCADE)
