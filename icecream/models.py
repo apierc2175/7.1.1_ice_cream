@@ -4,9 +4,6 @@ from django.utils import timezone
 CHO = 'CHOCOLATE'
 VAN = 'VANILLA'
 
-
-
-
 class IceCream(models.Model):
 
     DAILY = 'DAILY'
