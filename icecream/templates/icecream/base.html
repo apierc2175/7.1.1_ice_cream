@@ -1,12 +1,22 @@
-
-<header>
-  <ul>
-    <li>Daily</li>
-    <li>Weekly</li>
-    <li>Seasonal</li>
-  </ul>
-</header>
-<body>
+<html>
+  <head>
+    <title>Ice Cream</title>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <ul class="navbar-nav mr-auto">
+          <a class="nav-link" href="{% url 'icecream:daily' %}"><li class="nav-item">Daily</li></a>
+          <a class="nav-link" href="{% url 'icecream:weekly' %}"><li class="nav-item">Weekly</li></a>
+          <a class="nav-link" href="{% url 'icecream:seasonal' %}"><li class="nav-item">Seasonal</li></a>
+        </ul>
+      </nav>
+  </header>
+</body>
+<main>
   {% block content %}
   {% endblock %}
-</body>
+</main>
+</html>

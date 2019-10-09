@@ -2,14 +2,7 @@
 {% load static %}
 {% block content %}
 
-<html>
-  <head>
-    <title>Ice Cream</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'icecream/styles.css'}"> -->
-  </head>
-  <body>
+
     <h1>{{heading}}</h1>
     {% if ice_cream_list %}
 <!-- find way to seperate ul so each category has ul, daily, weekly seasonal -->
