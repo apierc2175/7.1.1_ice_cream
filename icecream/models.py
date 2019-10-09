@@ -29,7 +29,7 @@ class IceCream(models.Model):
     available = models.CharField(max_length=255, choices=AVAILABLE_CHOICES, default=DAILY)
     featured = models.BooleanField(default=False)
     date_churned = models.DateTimeField('date churned', default=timezone.now)
-
+    likes = models.IntegerField(default=0)
     def __str__(self):
         return self.flavor
 #

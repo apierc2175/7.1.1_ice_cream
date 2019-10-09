@@ -39,3 +39,9 @@ def seasonal(request):
         'heading': 'Seasonal Ice Cream Flavors'
     }
     return render(request, 'icecream/index.html', context)
+
+def likes(request):
+    ice_cream.likes = ice_cream.likes + 1
+    icecream.likes.save()
+
+    return render(request, 'icecream/index.html')
