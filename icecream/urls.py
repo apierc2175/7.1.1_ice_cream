@@ -7,6 +7,7 @@ urlpatterns = [
     path('daily/', views.daily, name='daily'),
     path('weekly/', views.weekly, name='weekly'),
     path('seasonal/', views.seasonal, name='seasonal'),
+    path('new/', views.CreateView.as_view(), name='create'),
     path("", views.index, name='index'),
     path('<int:pk>/likes', views.likes, name='likes'),
 ]

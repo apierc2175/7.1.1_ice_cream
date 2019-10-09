@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
+from django.views import generic
+from django.views.generic.edit import CreateView
 
 from .models import IceCream
 
@@ -50,3 +52,8 @@ def likes(request, pk):
     ice_cream.save()
 
     return HttpResponseRedirect(reverse('icecream:index'))
+
+class CreateView(generic.CreateView):
+    model = IceCream
+    fields = '__all__'
+    template_name = 'icecream/create.html'

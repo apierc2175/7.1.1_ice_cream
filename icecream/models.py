@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
+
 # Create your models here.
 CHO = 'CHOCOLATE'
 VAN = 'VANILLA'
@@ -32,6 +34,9 @@ class IceCream(models.Model):
     likes = models.IntegerField(default=0)
     def __str__(self):
         return self.flavor
+
+    def get_absolute_url(self):
+        return reverse('icecream:index')
 #
 # class Choice(models.Model):
 #      flavor = models.ForeignKey(IceCream, on_delete=models.CASCADE)
