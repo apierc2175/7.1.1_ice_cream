@@ -1,34 +1,32 @@
-
-<!-- <h1>Daily</h1>
-<ul>
-  <li>flavor here</li>
-  <li>flavor here</li>
-</ul>
-<h1>Weekly</h1>
-<ul>
-  <li>flavor here</li>
-  <li>flavor here</li>
-</ul>
-<h1>Seasonal</h1>
-<ul>
-  <li>flavor here</li>
-  <li>flavor here</li>
-</ul>
-  -->
-
-{{heading}}
-{% if ice_cream_list %}
+{% load static %}
+<html>
+  <head>
+    <title>Ice Cream</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'icecream/styles.css'}"> -->
+  </head>
+  <body>
+    <h1>{{heading}}</h1>
+    {% if ice_cream_list %}
 <!-- find way to seperate ul so each category has ul, daily, weekly seasonal -->
-  <ul>
+    <ul>
     {% for ice_cream in ice_cream_list %}
     <!-- each list item should say the flavor, base, date churned, featured -->
-    <li>
-      <p>{{ice_cream.flavor}}</p>
-      <p>{{ice_cream.featured}}</p>
-      <p>{{ice_cream.date_churned}}</p>
-    </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>No Ice cream available</p>
-{% endif %}
+      <div class="jumbotron">
+        <li>
+          <p>{{ice_cream.flavor}}</p>
+          <!-- <p>{{ice_cream.featured}}</p> -->
+          {% ifequal ice_cream.featured True %}
+            <p>This Is A Featured Item!</p>
+          {% endifequal %}
+          <p>Churned on {{ice_cream.date_churned}}</p>
+        </li>
+      </div>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>No Ice cream available</p>
+      {% endif %}
+  </body>
+</html>
