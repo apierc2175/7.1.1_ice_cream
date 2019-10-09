@@ -4,6 +4,9 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView
+
 
 from .models import IceCream
 
@@ -57,3 +60,8 @@ class CreateView(generic.CreateView):
     model = IceCream
     fields = '__all__'
     template_name = 'icecream/create.html'
+
+class DeleteView(generic.DeleteView):
+    model = IceCream
+    success_url = reverse_lazy('icecream')
+    template_name = 'icecream/delete.html'

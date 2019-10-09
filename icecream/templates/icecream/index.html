@@ -18,6 +18,10 @@
           {% endifequal %}
           <p>Churned on {{ice_cream.date_churned}}</p>
         </li>
+        <form action="{% url 'icecream:likes' ice_cream.id %}" method="post">
+          {% csrf_token %}
+          <button>{{ice_cream.likes}} Likes</button>
+        </form>
         <a href="{% url 'icecream:create' %}"<p>Click here to add a flavor</p></a>
       </div>
       {% endfor %}
