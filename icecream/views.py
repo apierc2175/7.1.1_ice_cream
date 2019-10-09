@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 
 from .models import IceCream
 
@@ -40,8 +41,12 @@ def seasonal(request):
     }
     return render(request, 'icecream/index.html', context)
 
-def likes(request):
-    ice_cream.likes = ice_cream.likes + 1
-    icecream.likes.save()
+def likes(request, pk):
+    # show_like = ice_cream.likes.get(pk=request.POST['ice_cream'])
+    # show_like.likes = show_like.likes + 1
+    # show_like.likes.save()
+    ice_cream = get_object_or_404(IceCream, pk=pk)
+    ice_cream.likes += 1
+    ice_cream.save()
 
-    return render(request, 'icecream/index.html')
+    return HttpResponseRedirect(reverse('icecream:index'))

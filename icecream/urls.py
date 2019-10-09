@@ -8,4 +8,5 @@ urlpatterns = [
     path('weekly/', views.weekly, name='weekly'),
     path('seasonal/', views.seasonal, name='seasonal'),
     path("", views.index, name='index'),
+    path('<int:pk>/likes', views.likes, name='likes'),
 ]

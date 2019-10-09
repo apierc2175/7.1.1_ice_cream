@@ -21,7 +21,10 @@
             <p>This Is A Featured Item!</p>
           {% endifequal %}
           <p>Churned on {{ice_cream.date_churned}}</p>
-          <button onclick="likes()">{{ice_cream.likes}} Likes</button
+          <form action="{% url 'icecream:likes' ice_cream.id %}" method="post">
+            {% csrf_token %}
+            <button>{{ice_cream.likes}} Likes</button>
+          </form>
         </li>
       </div>
       {% endfor %}
