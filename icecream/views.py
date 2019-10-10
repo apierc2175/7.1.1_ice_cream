@@ -4,10 +4,9 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.views.generic.edit import CreateView
+#reverse lazy allows it to fully complete before executing
 from django.urls import reverse_lazy
 from django.views.generic.edit import DeleteView
-
-
 from .models import IceCream
 
 # Create your views here.
@@ -56,6 +55,11 @@ def likes(request, pk):
 
     return HttpResponseRedirect(reverse('icecream:index'))
 
+# def delete_view(request, pk):
+#     icecream = get_object_or_404(IceCream, pk=pk)
+#     icecream.delete()
+#     return HttpResponseRedirect(reverse_lazy(icecream:index))
+
 class CreateView(generic.CreateView):
     model = IceCream
     fields = '__all__'
@@ -63,5 +67,5 @@ class CreateView(generic.CreateView):
 
 class DeleteView(generic.DeleteView):
     model = IceCream
-    success_url = reverse_lazy('icecream')
+    success_url = reverse_lazy('icecream:index')
     template_name = 'icecream/delete.html'

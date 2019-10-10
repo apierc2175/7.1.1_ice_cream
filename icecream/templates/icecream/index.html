@@ -23,6 +23,7 @@
           <button>{{ice_cream.likes}} Likes</button>
         </form>
         <a href="{% url 'icecream:create' %}"<p>Click here to add a flavor</p></a>
+        <a href="{% url 'icecream:delete' ice_cream.id %}"<p>Click here to delete a flavor</p></a>
       </div>
       {% endfor %}
     </ul>
