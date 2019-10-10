@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'icecream.apps.IcecreamConfig',
+    'accounts.apps.AccountsConfig',
+    # 'brochure.apps.BrochureConfig',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +122,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/icecream/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
